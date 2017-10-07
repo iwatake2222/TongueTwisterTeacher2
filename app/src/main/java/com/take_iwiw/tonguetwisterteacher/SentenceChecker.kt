@@ -1,7 +1,6 @@
 package com.take_iwiw.tonguetwisterteacher
 
-import com.atilika.kuromoji.ipadic.Tokenizer
-
+import org.atilika.kuromoji.Tokenizer
 
 /**
  * Created by tak on 2017/10/07.
@@ -39,8 +38,7 @@ class SentenceChecker {
             scoreKanji = checkSimilar(strKanjiMixed, strRecognized)
 
             /* convert recognized sentence(including kanji) into katakana */
-//            val tokenizer = Tokenizer.builder().mode(Tokenizer.Mode.NORMAL).build()
-            val tokenizer = Tokenizer.Builder().build()
+            val tokenizer = Tokenizer.builder().mode(Tokenizer.Mode.NORMAL).build()
             var tokens = tokenizer.tokenize(strRecognized)
             var recognizedKatakana = ""
             try {
@@ -48,7 +46,7 @@ class SentenceChecker {
                     if (token.reading == null) {
                         /* workaround: tokenize sometimes returns null (it looks it happens when input sentence is all katakana) */
                         Debug.logDebug("token.reading is null")
-                        break;
+                        break
                     } else {
                         recognizedKatakana += token.reading
                     }
