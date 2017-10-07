@@ -16,7 +16,8 @@
 
     <string name="text_info_detail" >
         <line>"Tongue Twister Teacher\n"</line>
-        <line>"Version 1.1.0"</line>
+        <line>"Version 1.1.0\n"</line>
+        <line>"\nThis software includes the work that is distributed in the Apache License 2.0"</line>
     </string>
 
     <!-- For Speaking Activity -->

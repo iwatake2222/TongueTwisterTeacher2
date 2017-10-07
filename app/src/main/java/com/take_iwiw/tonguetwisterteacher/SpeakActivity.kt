@@ -405,7 +405,8 @@ class SpeakActivity : AppCompatActivity(), RecognitionListener {
 
             when {
                 scoreMax == 1.0  -> {strResult = "PERFECT : score = " + String.format("%.4f", scoreMax) + Utility.BR + strResult}
-                scoreMax == 0.95 -> {strResult = "GREAT : score = " + String.format("%.4f", scoreMax) + Utility.BR + strResult}
+                scoreMax == 0.95 -> {strResult = "EXCELLENT : score = " + String.format("%.4f", scoreMax) + Utility.BR + strResult}
+                scoreMax == 0.90 -> {strResult = "GREAT : score = " + String.format("%.4f", scoreMax) + Utility.BR + strResult}
                 scoreMax >= SentenceChecker.JUDGE_SIMILAR_THRESHOLD[level] -> {strResult = "GOOD : score = " + String.format("%.4f", scoreMax) + Utility.BR + strResult}
                 else -> {strResult = "BAD : score = " + String.format("%.4f", scoreMax) + Utility.BR + strResult}
             }
