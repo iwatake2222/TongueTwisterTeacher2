@@ -382,7 +382,7 @@ class SpeakActivity : AppCompatActivity(), RecognitionListener {
 
             var scoreMax: Double = 0.0
             var strResult = ""
-            for (recognizedSentence in recData) {
+            for ( (index, recognizedSentence) in recData.withIndex()) {
                 Debug.logDebug(recognizedSentence)
 
                 /* Examine each sentence. Use the highest score */
@@ -402,12 +402,14 @@ class SpeakActivity : AppCompatActivity(), RecognitionListener {
                 if (score > scoreMax) {
                     scoreMax = score
                 }
+
+                if(index >= 2) break    // do not check all the sentences as it takes time...
             }
 
             when {
                 scoreMax == 1.0  -> {strResult = "PERFECT : score = " + String.format("%.4f", scoreMax) + Utility.BR + strResult}
-                scoreMax == 0.95 -> {strResult = "EXCELLENT : score = " + String.format("%.4f", scoreMax) + Utility.BR + strResult}
-                scoreMax == 0.90 -> {strResult = "GREAT : score = " + String.format("%.4f", scoreMax) + Utility.BR + strResult}
+                scoreMax >= 0.95 -> {strResult = "EXCELLENT : score = " + String.format("%.4f", scoreMax) + Utility.BR + strResult}
+                scoreMax >= 0.90 -> {strResult = "GREAT : score = " + String.format("%.4f", scoreMax) + Utility.BR + strResult}
                 scoreMax >= SentenceChecker.JUDGE_SIMILAR_THRESHOLD[level] -> {strResult = "GOOD : score = " + String.format("%.4f", scoreMax) + Utility.BR + strResult}
                 else -> {strResult = "BAD : score = " + String.format("%.4f", scoreMax) + Utility.BR + strResult}
             }
