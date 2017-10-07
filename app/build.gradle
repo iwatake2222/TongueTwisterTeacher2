@@ -18,7 +18,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        pickFirst 'META-INF/CONTRIBUTORS.md'
+        pickFirst 'META-INF/LICENSE.md'
+    }
 }
+
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -29,8 +34,12 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:26.+'
+// https://mvnrepository.com/artifact/com.atilika.kuromoji/kuromoji-ipadic
+    compile group: 'com.atilika.kuromoji', name: 'kuromoji-ipadic', version: '0.9.0'
     testCompile 'junit:junit:4.12'
 }
+
+
 repositories {
     mavenCentral()
 }

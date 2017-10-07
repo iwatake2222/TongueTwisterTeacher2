@@ -12,7 +12,7 @@ class Debug {
     companion object {
         private val BR = System.getProperty("line.separator")
         private val TAG = "@] TTT: "
-        private val IS_DEBUG = false
+        private val IS_DEBUG = true
         fun logDebug(msg: String) {
             if (BuildConfig.DEBUG && IS_DEBUG) {
                 val callStack = Thread.currentThread().stackTrace[3]
