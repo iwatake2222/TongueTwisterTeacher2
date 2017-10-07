@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="2pt"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/textView_item_sentence"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="She sells seashells by the seashore."
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView_item_recordCnt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="5 / 7"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+            android:textColor="#88888888"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/textView_item_recordTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="00:00.00"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+            android:textColor="#88888888"
+            android:textStyle="bold|italic" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewDummy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="   " />
+
+</LinearLayout>

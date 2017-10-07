@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.take_iwiw.tonguetwisterteacher.MainActivity">
+    <item
+        android:id="@+id/menu_language"
+        android:orderInCategory="100"
+        android:title="@string/text_menu_language"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_level"
+        android:orderInCategory="100"
+        android:title="@string/text_menu_level"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_reset"
+        android:orderInCategory="100"
+        android:title="@string/text_menu_reset"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_about"
+        android:orderInCategory="100"
+        android:title="@string/text_menu_about"
+        app:showAsAction="never" />
+</menu>

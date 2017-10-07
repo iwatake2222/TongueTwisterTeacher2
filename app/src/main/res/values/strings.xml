@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Tongue Twister Teacher</string>
+
+    <!-- For Menu -->
+    <string name="text_menu_language">LANGUAGE</string>
+    <string name="text_menu_level">LEVEL</string>
+    <string name="text_menu_reset">DATA_RESET</string>
+    <string name="text_menu_about">ABOUT</string>
+
+    <string name="text_menu_language_EN">"English"</string>
+    <string name="text_menu_language_JA">"Japanese"</string>
+
+    <string name="text_menu_level_HARD">"HARD"</string>
+    <string name="text_menu_level_NORMAL">"NORMAL"</string>
+    <string name="text_menu_level_EASY">"EASY"</string>
+
+    <string name="text_info_detail" >
+        <line>"Tongue Twister Teacher\n"</line>
+        <line>"Version 1.1.0"</line>
+    </string>
+
+    <!-- For Speaking Activity -->
+    <string name="text_speaking_memo">
+        <line>"NOTE:\n"</line>
+        <line>" + Tap the START button to check your speaking, and please wait till it becomes green.\n"</line>
+        <line>" + Count starts automatically when you start speaking.\n"</line>
+        <line>" + You can change the text size using the seekbar.\n"</line>
+        <line>"\nNOTICE:\n"</line>
+        <line>" + In case your speaking is not recognized, please confirm:\n"</line>
+        <line>" +  - your phone is connected to the internet\n"</line>
+        <line>" +  - you have language pack (Settings -> General management -> Language and input -> Virtual keyboard -> Google voice typing -> Offline speech recognition) \n"</line>
+    </string>
+
+    <string name="text_speaking_button_START">"START"</string>
+    <string name="text_speaking_button_WAIT">"PLEASE WAIT"</string>
+    <string name="text_speaking_button_SPEAK">"PLEASE SPEAK"</string>
+    <string name="text_speaking_button_SPEAKING">"SPEAKING"</string>
+    <string name="text_speaking_button_JUDGING">"JUDGING"</string>
+
+</resources>
