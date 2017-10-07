@@ -69,7 +69,7 @@ class SentenceInfo(val dbId: Int, val languageId: Int, val sentenceMain: String,
                     /* Japanese */
                     SentenceInfo(0, 1, "隣の客は、よく柿食う客だ", "となりのきゃくは、よくかきくうきゃくだ" + BR +  "To na ri no kya ku wa, yo ku ka ki kuu kya ku da", "トナリノキャクハ ヨクカキクウキャクダ"),
                     SentenceInfo(0, 1, "赤巻紙、青巻紙、黄巻紙", "あかまきがみ、あおまきがみ、きまきがみ" + BR + "A ka ma ki ga mi, a o ma ki ga mi, ki ma ki ga mi", "アカマキガミ アオマキガミ キマキガミ"),
-                    SentenceInfo(0, 0, "生麦生米生卵", "なまむぎ なまごめ なまたまご" + BR + "Na ma mu gi, na ma go me, na ma ta ma go", "ナマムギ ナマゴメ ナマタマゴ"),
+                    SentenceInfo(0, 1, "生麦生米生卵", "なまむぎ なまごめ なまたまご" + BR + "Na ma mu gi, na ma go me, na ma ta ma go", "ナマムギ ナマゴメ ナマタマゴ"),
                     SentenceInfo(0, 1, "バスガス爆発、バスガス爆発、バスガス爆発", "ばすがすばくはつ" + BR + "Ba su ga su ba ku ha tsu", "バスガスバクハツ バスガスバクハツ バスガスバクハツ"),
                     SentenceInfo(0, 1, "東京特許許可局", "とうきょうとっきょきょかきょく" + BR + "Tou kyou to kkyo kyo ka kyo ku", "トウキョウトッキョキョカキョク"),
                     SentenceInfo(0, 1, "赤パジャマ、黄パジャマ、茶パジャマ", "あかぱじゃま、きぱじゃま、ちゃぱじゃま" + BR + "A ka pa ja ma, ki pa ja ma, cha pa ja ma", "アカパジャマ キパジャマ チャパジャマ"),
