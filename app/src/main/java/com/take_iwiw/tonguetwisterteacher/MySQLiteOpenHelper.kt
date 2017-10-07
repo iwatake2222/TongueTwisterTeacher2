@@ -15,12 +15,12 @@ class MySQLiteOpenHelper(c: Context) : SQLiteOpenHelper(c, DB, null, DB_VERSION)
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         Debug.logDebug("UpgradeDB")
-//        Debug.showToast(mainContext!!, "Upgrade DB")
+        Debug.showToast(mainContext!!, "Upgrade DB")
         try {
             db.execSQL(DROP_TABLE)
         } catch (e: Exception) {
             Debug.logError(e.toString())
-//            Debug.showToastDetail(mainContext!!, e.toString())
+            Debug.showToastDetail(mainContext!!, e.toString())
         }
         onCreate(db)
     }

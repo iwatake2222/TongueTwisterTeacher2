@@ -1,19 +1,25 @@
 package com.take_iwiw.tonguetwisterteacher
 
+import android.Manifest
+import android.content.ContentValues
+import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
+import android.preference.PreferenceManager
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ListView
 import kotlinx.android.synthetic.main.content_main.*
-import android.content.Intent
-import android.preference.PreferenceManager
-import android.content.ContentValues
-import android.content.Context
-import android.database.sqlite.SQLiteDatabase
-import android.content.DialogInterface
-import android.support.v7.app.AlertDialog
+
+
 
 var mainContext: Context? = null   // todo: should be better way to get context
 
@@ -58,6 +64,17 @@ class MainActivity : AppCompatActivity() {
         if(sentenceInfoAdapter?.count == 0) {
             resetDB()
             selectLanguage()
+        } else {
+            // for Android 6 and later. need to get permission in addition to manifest
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    android.Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+                val permissions = arrayOf<String>(Manifest.permission.RECORD_AUDIO)
+                ActivityCompat.requestPermissions(
+                        this,
+                        permissions,
+                        0)
+            }
         }
     }
 
@@ -140,11 +157,11 @@ class MainActivity : AppCompatActivity() {
                     startActivityForResult(intent, INTENT_REQUEST_CODE)
                 } else {
                     Debug.logError(position.toString())
-//                    Debug.showToastDetail(this, position.toString())
+                    Debug.showToastDetail(this, position.toString())
                 }
             } else {
                 Debug.logError(position.toString())
-//                Debug.showToastDetail(this, position.toString())
+                Debug.showToastDetail(this, position.toString())
             }
         })
     }
@@ -242,6 +259,17 @@ class MainActivity : AppCompatActivity() {
             .setPositiveButton("OK") { dialog, which ->
                 languageId = languageIdTemp
                 getSentencesFromDB()
+
+                // for Android 6 and later. need to get permission in addition to manifest
+                if (ContextCompat.checkSelfPermission(
+                        this,
+                        android.Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+                    val permissions = arrayOf<String>(Manifest.permission.RECORD_AUDIO)
+                    ActivityCompat.requestPermissions(
+                            this,
+                            permissions,
+                            0)
+                }
             }
             .setNegativeButton("CANCEL", null)
             .show()

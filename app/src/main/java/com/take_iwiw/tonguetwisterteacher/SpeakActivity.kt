@@ -158,7 +158,7 @@ class SpeakActivity : AppCompatActivity(), RecognitionListener {
         } else {
             textView_speak_sentence.text = "SYSTEM ERROR"
             Debug.logError("")
-//            Debug.showToastDetail(this, "System Error")
+            Debug.showToastDetail(this, "System Error")
         }
     }
 
@@ -346,10 +346,11 @@ class SpeakActivity : AppCompatActivity(), RecognitionListener {
 
     override fun onError(error: Int) {
         Debug.logDebug("onError" + error.toString())
-//        Debug.showToast(speakContext!!, "onError" + error.toString())
+        Debug.showToast(speakContext!!, "onError" + error.toString())
         when (error) {
             SpeechRecognizer.ERROR_AUDIO , SpeechRecognizer.ERROR_CLIENT , SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS -> {
-                textView_speak_recognizedSentence.text = "ERROR:"
+                textView_speak_recognizedSentence.text = "ERROR:" + Utility.BR +
+                        "Please confirm app permission"
             }
 
             SpeechRecognizer.ERROR_NETWORK, SpeechRecognizer.ERROR_NETWORK_TIMEOUT, SpeechRecognizer.ERROR_SERVER, SpeechRecognizer.ERROR_RECOGNIZER_BUSY -> {

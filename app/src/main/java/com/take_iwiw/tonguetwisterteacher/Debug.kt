@@ -1,9 +1,8 @@
 package com.take_iwiw.tonguetwisterteacher
 
-import android.widget.Toast
-import android.content.ContentValues.TAG
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 
 
 /**
@@ -13,9 +12,9 @@ class Debug {
     companion object {
         private val BR = System.getProperty("line.separator")
         private val TAG = "@] TTT: "
-        private val IS_DEBUG = true
+        private val IS_DEBUG = false
         fun logDebug(msg: String) {
-            if (IS_DEBUG) {
+            if (BuildConfig.DEBUG && IS_DEBUG) {
                 val callStack = Thread.currentThread().stackTrace[3]
                 Log.d(TAG + callStack.fileName + "#" + callStack.methodName + ":" + callStack.lineNumber, msg)
             } else {
@@ -29,13 +28,13 @@ class Debug {
         }
 
         fun showToast(context: Context, msg: String) {
-            if (IS_DEBUG) {
+            if (BuildConfig.DEBUG && IS_DEBUG) {
                 Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
             }
         }
 
         fun showToastDetail(context: Context, msg: String) {
-            if (IS_DEBUG) {
+            if (BuildConfig.DEBUG && IS_DEBUG) {
                 val callStack = Thread.currentThread().stackTrace[3]
                 Toast.makeText(context, callStack.fileName + "#" + callStack.methodName + ":" + callStack.lineNumber
                         + BR + msg, Toast.LENGTH_LONG).show()

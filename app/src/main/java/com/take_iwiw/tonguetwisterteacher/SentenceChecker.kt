@@ -41,13 +41,18 @@ class SentenceChecker {
             val tokenizer = Tokenizer.builder().mode(Tokenizer.Mode.NORMAL).build()
             var tokens = tokenizer.tokenize(strRecognized)
             var recognizedKatakana = ""
-            for (token in tokens) {
-                recognizedKatakana += token.reading
-                if (token.reading == null) {
-                    /* workaround: tokenize sometimes returns null (it looks it happens when input sentence is all katakana) */
-                    recognizedKatakana = strRecognized
-                    break;
+            try {
+                for (token in tokens) {
+                    if (token.reading == null) {
+                        /* workaround: tokenize sometimes returns null (it looks it happens when input sentence is all katakana) */
+                        recognizedKatakana = strRecognized
+                        break;
+                    } else {
+                        recognizedKatakana += token.reading
+                    }
                 }
+            } catch (e: Exception) {
+                Debug.logError(e.toString())
             }
             Debug.logDebug(recognizedKatakana)
             Debug.logDebug(strKatakana)
