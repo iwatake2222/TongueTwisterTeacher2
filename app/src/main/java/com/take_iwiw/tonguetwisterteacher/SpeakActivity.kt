@@ -78,19 +78,23 @@ class SpeakActivity : AppCompatActivity(), RecognitionListener {
         }
 
         /* Mute ON system sounds to disable "pi" sound at the beginning of speech recognition */
-        val amanager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            amanager.adjustStreamVolume(AudioManager.STREAM_NOTIFICATION, AudioManager.ADJUST_MUTE, 0);
-            amanager.adjustStreamVolume(AudioManager.STREAM_ALARM, AudioManager.ADJUST_MUTE, 0);
-            amanager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_MUTE, 0);
-            amanager.adjustStreamVolume(AudioManager.STREAM_RING, AudioManager.ADJUST_MUTE, 0);
-            amanager.adjustStreamVolume(AudioManager.STREAM_SYSTEM, AudioManager.ADJUST_MUTE, 0);
-        } else {
-            amanager.setStreamMute(AudioManager.STREAM_NOTIFICATION, true)
-            amanager.setStreamMute(AudioManager.STREAM_ALARM, true)
-            amanager.setStreamMute(AudioManager.STREAM_MUSIC, true)
-            amanager.setStreamMute(AudioManager.STREAM_RING, true)
-            amanager.setStreamMute(AudioManager.STREAM_SYSTEM, true)
+        try {
+            val amanager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                amanager.adjustStreamVolume(AudioManager.STREAM_NOTIFICATION, AudioManager.ADJUST_MUTE, 0);
+                amanager.adjustStreamVolume(AudioManager.STREAM_ALARM, AudioManager.ADJUST_MUTE, 0);
+                amanager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_MUTE, 0);
+                amanager.adjustStreamVolume(AudioManager.STREAM_RING, AudioManager.ADJUST_MUTE, 0);
+                amanager.adjustStreamVolume(AudioManager.STREAM_SYSTEM, AudioManager.ADJUST_MUTE, 0);
+            } else {
+                amanager.setStreamMute(AudioManager.STREAM_NOTIFICATION, true)
+                amanager.setStreamMute(AudioManager.STREAM_ALARM, true)
+                amanager.setStreamMute(AudioManager.STREAM_MUSIC, true)
+                amanager.setStreamMute(AudioManager.STREAM_RING, true)
+                amanager.setStreamMute(AudioManager.STREAM_SYSTEM, true)
+            }
+        } catch (e: Exception) {
+            Debug.logError(e.toString())
         }
 
         initStatus()
@@ -106,23 +110,29 @@ class SpeakActivity : AppCompatActivity(), RecognitionListener {
         Debug.logDebug("onStop")
 
         /* finish SpeechRecognizer */
-        speechRecognizer?.destroy()
-        speechRecognizer = null
+        if ( speechRecognizer != null && speechRecognizer is SpeechRecognizer) {
+            speechRecognizer?.destroy()
+            speechRecognizer = null
+        }
 
         /* Mute OFF system sounds */
-        val amanager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            amanager.adjustStreamVolume(AudioManager.STREAM_NOTIFICATION, AudioManager.ADJUST_UNMUTE, 0);
-            amanager.adjustStreamVolume(AudioManager.STREAM_ALARM, AudioManager.ADJUST_UNMUTE, 0);
-            amanager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_UNMUTE, 0);
-            amanager.adjustStreamVolume(AudioManager.STREAM_RING, AudioManager.ADJUST_UNMUTE, 0);
-            amanager.adjustStreamVolume(AudioManager.STREAM_SYSTEM, AudioManager.ADJUST_UNMUTE, 0);
-        } else {
-            amanager.setStreamMute(AudioManager.STREAM_NOTIFICATION, false)
-            amanager.setStreamMute(AudioManager.STREAM_ALARM, false)
-            amanager.setStreamMute(AudioManager.STREAM_MUSIC, false)
-            amanager.setStreamMute(AudioManager.STREAM_RING, false)
-            amanager.setStreamMute(AudioManager.STREAM_SYSTEM, false)
+        try {
+            val amanager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                amanager.adjustStreamVolume(AudioManager.STREAM_NOTIFICATION, AudioManager.ADJUST_UNMUTE, 0);
+                amanager.adjustStreamVolume(AudioManager.STREAM_ALARM, AudioManager.ADJUST_UNMUTE, 0);
+                amanager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_UNMUTE, 0);
+                amanager.adjustStreamVolume(AudioManager.STREAM_RING, AudioManager.ADJUST_UNMUTE, 0);
+                amanager.adjustStreamVolume(AudioManager.STREAM_SYSTEM, AudioManager.ADJUST_UNMUTE, 0);
+            } else {
+                amanager.setStreamMute(AudioManager.STREAM_NOTIFICATION, false)
+                amanager.setStreamMute(AudioManager.STREAM_ALARM, false)
+                amanager.setStreamMute(AudioManager.STREAM_MUSIC, false)
+                amanager.setStreamMute(AudioManager.STREAM_RING, false)
+                amanager.setStreamMute(AudioManager.STREAM_SYSTEM, false)
+            }
+        } catch (e: Exception) {
+            Debug.logError(e.toString())
         }
 
         savePreference()
